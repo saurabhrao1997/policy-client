@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1768707677404" clover="3.2.0">
+  <project timestamp="1768707677404" name="All files">
+    <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4" elements="12" coveredelements="12" complexity="0" loc="6" ncloc="6" packages="1" files="1" classes="1"/>
+    <file name="Practice.tsx" path="D:\Advance rename\SAP\client\src\component\Practice.tsx">
+      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+      <line num="6" count="23" type="stmt"/>
+      <line num="7" count="23" type="stmt"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="11" count="23" type="stmt"/>
+      <line num="13" count="23" type="stmt"/>
+      <line num="21" count="17" type="stmt"/>
+    </file>
+  </project>
+</coverage>
