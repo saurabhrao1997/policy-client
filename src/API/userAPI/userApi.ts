@@ -7,6 +7,7 @@ export interface User {
   name: string;
   email: string;
   phone?: string;
+  label?:string
   // Add any additional fields here
 }
 
@@ -14,6 +15,7 @@ export interface NewUser {
   name: string;
   email: string;
   phone?: string;
+  label?:string
 }
 
 export interface UpdateUser {
@@ -48,7 +50,7 @@ export const userApi = createApi({
       }),
       invalidatesTags: ['User'],
     }),
-     createRole: builder.mutation<User, NewUser>({
+     createRole: builder.mutation<any, any>({
       query: (newUser) => ({
         url: '/createroletype',
         method: 'POST',
@@ -65,7 +67,7 @@ export const userApi = createApi({
 
    
     
-    updateUser: builder.mutation<User, UpdateUser>({
+    updateUser: builder.mutation<any, any>({
       query: ({ id, ...patch }) => ({
         url: `/users/${id}`,
         method: 'PATCH',

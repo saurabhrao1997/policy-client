@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { motion } from 'framer-motion';
 import clsx from 'clsx';
-import FullFeatureTable from "../../../component/ReactTable/tableData";
+import { motion } from 'framer-motion';
+import { Download, Eye, FileText, Filter, Search, Shield } from 'lucide-react';
+import { useEffect, useState } from "react";
 import { useGetAllPolicysQuery } from "../../../API/Policy/policy";
-import moment from "moment";
-import { policyColumn } from "../../../ReactColumn";
-import { downloadPolicyApi } from "../../../HelpingApi";
-import { Shield, FileText, Download, Eye, Search, Filter } from 'lucide-react';
+import FullFeatureTable from "../../../component/ReactTable/tableData";
 import Sidebar from "../../../component/SideBar";
+import { downloadPolicyApi } from "../../../HelpingApi";
+import { policyColumn } from "../../../ReactColumn";
 
 const FloatingOrb = ({ delay = 0, size = 'w-32 h-32' }) => (
   <motion.div
@@ -158,7 +157,7 @@ export default function PolicyIndex() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-purple-200 text-sm font-medium">Total Policies</p>
-                <p className="text-2xl font-bold text-white">{policyList?.data?.length || 0}</p>
+                <p className="text-2xl font-bold text-white">{(policyList as any)?.data?.length || 0}</p>
               </div>
               <Shield className="w-8 h-8 text-purple-300" />
             </div>
@@ -172,7 +171,7 @@ export default function PolicyIndex() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-purple-200 text-sm font-medium">Active Policies</p>
-                <p className="text-2xl font-bold text-white">{(policyList?.data as any)?.filter((p: any) => p.policyDetails && p.policyDetails.length > 0)?.length || 0}</p>
+                <p className="text-2xl font-bold text-white">{((policyList as any)?.data as any)?.filter((p: any) => p.policyDetails && p.policyDetails.length > 0)?.length || 0}</p>
               </div>
               <Eye className="w-8 h-8 text-green-400" />
             </div>
@@ -244,7 +243,7 @@ export default function PolicyIndex() {
             className="overflow-hidden rounded-2xl"
           >
             <FullFeatureTable 
-              data={policyList?.data as any || []} 
+              data={(policyList as any)?.data as any || []} 
               parentColumn={policyColumn as any} 
               showDelete={true}
               showEdit={true}

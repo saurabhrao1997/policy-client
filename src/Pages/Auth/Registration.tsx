@@ -1,15 +1,14 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import Select from 'react-select';
-import type { StylesConfig } from 'react-select';
 import chroma from 'chroma-js';
-  import { ToastContainer, toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { setToken, setUserId } from '../../store/Slice/TokenSlice';
 import { useNavigate } from 'react-router-dom';
+import type { StylesConfig } from 'react-select';
+import Select from 'react-select';
+import { ToastContainer, toast } from 'react-toastify';
+import * as yup from 'yup';
 import { useGetAllRoleQuery } from '../../API/userAPI/userApi';
+import { setToken, setUserId } from '../../store/Slice/TokenSlice';
 // Yup Validation Schema
 const schema = yup.object().shape({
   Name: yup.string().required('First Name is required').min(2, 'Too short'),
@@ -27,7 +26,7 @@ Mobile: yup.string().required('Mobile is required').matches(/^\d{10}$/, 'Mobile 
     .min(6, 'Must be at least 6 characters'),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref('password'), null], 'Passwords must match')
+    .oneOf([yup.ref('password'),], 'Passwords must match')
     .required('Confirm your password'),
   terms: yup.bool().oneOf([true], 'You must accept the terms'),
 });
@@ -40,7 +39,7 @@ export default function RegisterForm() {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+
     setValue,
   } = useForm({
     resolver: yupResolver(schema),
@@ -179,7 +178,7 @@ export default function RegisterForm() {
         <div className="mb-4">
           <label className="block mb-1 text-gray-100">Role</label>
           <Select
-            options={userRoleTypeData?.data}
+            options={(userRoleTypeData as any)?.data}
             onChange={(selectedOption) => {
               // @ts-ignore
               setValue('role', selectedOption);
@@ -294,14 +293,14 @@ export const colourStyles: StylesConfig<ColourOption, true> = {
       },
     };
   },
-  multiValue: (styles, { data }) => {
+  multiValue: (styles) => {
     const color = chroma("black");
     return {
       ...styles,
       backgroundColor: color.alpha(0.1).css(),
     };
   },
-  multiValueLabel: (styles, { data }) => ({
+  multiValueLabel: (styles) => ({
     ...styles,
     color: "white",
   }),

@@ -32,10 +32,10 @@ const receiverId = params.get('id');
      const {data:massageBetweenUser}= useGetMassagesBetweenUsersQuery(receiverId!);
        const [sendMassage] = useSendMassageMutation();
 
-console.log("jldskdl",massageBetweenUser)
-// states
-const [isConnected,setIsConnected] = useState(socket.connected);
-const [fooEvent,setFooEvent] = useState<any[]>([]);
+       // states
+       const [isConnected,setIsConnected] = useState(socket.connected);
+       const [fooEvent,setFooEvent] = useState<any[]>([]);
+       console.log("jldskdl",massageBetweenUser,fooEvent)
 
 
 useEffect(()=>{
@@ -115,7 +115,7 @@ useEffect(()=>{
     },
   ]);
   const [inputValue, setInputValue] = useState('');
-  const [name,setName] = useState("pawan")
+
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
@@ -138,7 +138,7 @@ useEffect(()=>{
       text: inputValue,
       sender:"bot",
       timestamp: new Date(),
-      name:name
+      name:"pawan"
 
      }
 

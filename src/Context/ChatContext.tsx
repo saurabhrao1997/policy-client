@@ -12,10 +12,7 @@ export const ChatContext = createContext<ChatContextType | null>(null);
 export const ChatProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
     const [socket, setSocket] = useState<Socket | null>(null);
     const [getOnlineUsers, setGetOnlineUsers] = useState<any[]>([]);
-    const [userList,setUserList] = useState<any[]>([]);
-    const [messages,setMessages] = useState<any[]>([]);
-    const [selecedUser,setSelectedUser] = useState<any>(null);
-    const [unseenMassages,setUnseenMassages] = useState<{}>({});
+  
 
 
     // call api of chat server

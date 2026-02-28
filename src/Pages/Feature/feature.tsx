@@ -1,6 +1,5 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
 import {
@@ -47,7 +46,7 @@ export default function Feature() {
     resolver: yupResolver(policySchema),
   });
 
-  const submitRole = async (data) => {
+  const submitRole = async (data:any) => {
     try {
       await createRole({ label: data.roleName }).unwrap();
       alert('Role created successfully');
@@ -58,7 +57,7 @@ export default function Feature() {
     }
   };
 
-  const submitPolicyType = async (data) => {
+  const submitPolicyType = async (data:any) => {
     try {
       await createPolicy({ label: data.type }).unwrap();
       alert('Policy Type created successfully');
@@ -98,7 +97,7 @@ export default function Feature() {
         <div>
             <div className='font-bold'>Present Role</div>
           {
-            userRoleTypeData?.data?.map((obj:{label:string,value:string})=>{
+            (userRoleTypeData as any)?.data?.map((obj:{label:string,value:string})=>{
                 return(
                     <div>
                        {obj?.label}
@@ -136,7 +135,7 @@ export default function Feature() {
            <div>
             <div className='font-bold'>Present Policy type</div>
           {
-            policyTypeData?.data?.map((obj:{label:string,value:string})=>{
+            (policyTypeData as any)?.data?.map((obj:{label:string,value:string})=>{
                 return(
                     <div>
                        {obj?.label}

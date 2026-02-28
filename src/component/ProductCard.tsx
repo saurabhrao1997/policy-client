@@ -18,7 +18,7 @@ const ProductCard = ({ product }:any) => {
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mt-3">
-          {product.tags.map((tag, i) => (
+          {product.tags.map((tag:string | number, i:number) => (
             <span
               key={i}
               className="text-xs bg-pink-100 text-pink-600 px-2 py-0.5 rounded-full"

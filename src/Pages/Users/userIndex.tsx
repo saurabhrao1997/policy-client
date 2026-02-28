@@ -1,12 +1,12 @@
-import React, { useMemo, useState, useEffect } from 'react'
-import { motion } from 'framer-motion';
 import clsx from 'clsx';
-import FullFeatureTable from '../../component/ReactTable/tableData';
+import { motion } from 'framer-motion';
+import { useEffect, useMemo, useState } from 'react';
 import { useGetAllRoleQuery, useGetAllUsersQuery } from '../../API/userAPI/userApi';
+import FullFeatureTable from '../../component/ReactTable/tableData';
 import Sidebar from '../../component/SideBar';
-import { Outlet } from 'react-router-dom';
+
+import { Settings, Shield, UserCheck, Users } from 'lucide-react';
 import { userColumn } from '../../ReactColumn';
-import { Users, Shield, UserCheck, Settings, Search, Filter } from 'lucide-react';
 
 const FloatingOrb = ({ delay = 0, size = 'w-32 h-32' }) => (
   <motion.div
@@ -41,29 +41,29 @@ export default function userIndex() {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
-    const data = Array.from({ length: 1000 }).map((_, i) => ({
-  id: i + 1,
-  name: `Name ${i + 1}`,
-  age: 20 + (i % 30),
-  email: `user${i + 1}@example.com`,
-  address: `Address ${i + 1}`,
-}));
+//     const data = Array.from({ length: 1000 }).map((_, i) => ({
+//   id: i + 1,
+//   name: `Name ${i + 1}`,
+//   age: 20 + (i % 30),
+//   email: `user${i + 1}@example.com`,
+//   address: `Address ${i + 1}`,
+// }));
 
 
 const {data:userList}= useGetAllUsersQuery()
 const {data:roleData}= useGetAllRoleQuery()
-console.log("slflsk",userList?.data,roleData?.data)
-const getCurrentRoleById=(id)=>{
- let result = roleData?.data?.filter((obj)=>  obj?._id == id)
+
+const getCurrentRoleById=(id:number | string)=>{
+ let result = (roleData as any)?.data?.filter((obj:any)=>  obj?._id == id)
 
   return result?.length > 0 ? result[0] : {label:"Admin",value:"Admin"}
 }
 
 const tableData =useMemo(()=>{
-  if(userList?.data?.length > 0){
-      return  userList?.data?.map((obj:any)=>({...obj,role:getCurrentRoleById(obj?.role)??{label:"Admin",value:"Admin"}}))
+  if((userList as any)?.data?.length > 0){
+      return  (userList as any)?.data?.map((obj:any)=>({...obj,role:getCurrentRoleById(obj?.role)??{label:"Admin",value:"Admin"}}))
   }
-},[userList?.data])
+},[(userList as any)?.data])
 
 
   return (

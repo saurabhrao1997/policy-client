@@ -48,7 +48,7 @@ export const policyApi = createApi({
       }),
       invalidatesTags: ['Policy'],
     }),
-     CreatePolicyType: builder.mutation<Policy, NewUser>({
+     CreatePolicyType: builder.mutation<any, any>({
       query: (newUser) => ({
         url: '/createpolicytype',
         method: 'POST',

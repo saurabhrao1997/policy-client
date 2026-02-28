@@ -1,6 +1,44 @@
+import { type ColumnDef } from "@tanstack/react-table";
 import moment from "moment";
 
-export const  userColumn = [
+interface Role {
+  label: string;
+}
+
+interface User {
+  Name: string;
+  email: string;
+  Mobile: string;
+  role?: Role;
+}
+
+interface Nominee {
+  name: string;
+}
+
+interface PaymentMode {
+  label: string;
+}
+
+interface PolicyDetails {
+  PremiumDueDate?: string;
+  PremiumEndDate?: string;
+  PremiumStartDate?: string;
+  sumAssured?: number;
+  nomineeDetails?: Nominee[];
+  paymentMode?: PaymentMode;
+}
+
+interface Policy {
+  clientName: string;
+  number: number;
+  email: string;
+  address: string;
+  dateOfBirth?: string;
+  policyDetails: PolicyDetails[];
+}
+
+export const  userColumn:ColumnDef<User>[]  = [
       {   
           header: "Name",
           accessorKey: "Name",
@@ -29,7 +67,7 @@ export const  userColumn = [
         },
 ]
 
- export const policyColumn = [
+ export const policyColumn:ColumnDef<Policy>[]  = [
     {
       header: "Name",
       accessorKey: "clientName",
@@ -82,16 +120,16 @@ export const  userColumn = [
       {
       // accessorKey: "name",
       header: "Nominee name",
-      accessorFn: (row) => row.policyDetails[0]?.nomineeDetails[0]?.name,
+      accessorFn: (row) => row?.policyDetails?.[0]?.nomineeDetails?.[0]?.name,
     },
       {
       // accessorKey: "name",
       header: "Payment method",
-      accessorFn: (row) => row.policyDetails[0]?.paymentMode?.label,
+      accessorFn: (row) => row?.policyDetails[0]?.paymentMode?.label,
     },
       {
       // accessorKey: "name",
       header: "Policy type",
-      accessorFn: (row) => row.policyDetails[0]?.paymentMode?.label,
+      accessorFn: (row) => row?.policyDetails[0]?.paymentMode?.label,
     },
   ];

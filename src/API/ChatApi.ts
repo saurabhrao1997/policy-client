@@ -52,7 +52,7 @@ export const {
   useCreateChatMutation,
   useGetAllChatsQuery,
   useGetSidebarUserListQuery,
-  useGetUsersForSideBarQuery,
+  // useGetUsersForSideBarQuery,
   useGetMassagesBetweenUsersQuery,
   useMarkmassagesAsSeenQuery,
   useSendMassageMutation

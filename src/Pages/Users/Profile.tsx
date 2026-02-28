@@ -1,8 +1,8 @@
 
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useGetUserByIdQuery } from '../../API/userAPI/userApi';
 import { clearToken } from '../../store/Slice/TokenSlice';
-import { useDispatch ,useSelector} from 'react-redux';
 
 
 
@@ -17,11 +17,11 @@ const Profile = () => {
 
 console.log("profile data",profielData,userId)
   const user = {
-    name: profielData?.data?.Name,
-    email: profielData?.data?.email,
-    phone: profielData?.data?.Mobile,
+    name: (profielData as any)?.data?.Name,
+    email: (profielData as any)?.data?.email,
+    phone: (profielData as any)?.data?.Mobile,
     location: 'Pune, India',
-    role: profielData?.data?.role?.label,
+    role: (profielData as any)?.data?.role?.label,
     bio: 'MERN Developer passionate about React, Node.js, and building scalable apps.',
     avatar: 'https://i.pravatar.cc/150?img=3', // Example image
   };

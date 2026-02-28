@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 const reviews = [
   {
@@ -60,18 +60,18 @@ const ClientReviewSlider = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const { name, role, image, review, rating, policyType } = reviews[current];
+  const { name, role, image, review } = reviews[current];
 
-  const renderStars = (rating) => {
-    return Array.from({ length: 5 }, (_, index) => (
-      <span
-        key={index}
-        className={`text-xl ${index < rating ? 'text-yellow-400' : 'text-gray-400'}`}
-      >
-        ★
-      </span>
-    ));
-  };
+  // const renderStars = (rating) => {
+  //   return Array.from({ length: 5 }, (_, index) => (
+  //     <span
+  //       key={index}
+  //       className={`text-xl ${index < rating ? 'text-yellow-400' : 'text-gray-400'}`}
+  //     >
+  //       ★
+  //     </span>
+  //   ));
+  // };
 
   return (
     <div className="bg-purple-600 text-white py-16 px-4 flex justify-center">

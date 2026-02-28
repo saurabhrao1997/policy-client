@@ -1,38 +1,37 @@
 // FullFeatureTable.tsx
-import React, { useMemo, useState, useRef } from "react";
 import {
-  useReactTable,
+  type ColumnDef,
+  type ColumnResizeMode,
+  flexRender,
   getCoreRowModel,
-  getSortedRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
   getExpandedRowModel,
-  getGroupedRowModel,
   getFacetedRowModel,
   getFacetedUniqueValues,
-  flexRender,
-  ColumnDef,
-  RowSelectionState,
-  VisibilityState,
-  type ColumnResizeMode,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  type RowSelectionState,
+  useReactTable,
+  type VisibilityState
 } from "@tanstack/react-table";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Pencil, 
-  ArrowDownToLine, 
-  Trash2, 
-  Search, 
-  Filter, 
-  ChevronUp, 
-  ChevronDown, 
-  ChevronLeft, 
+import clsx from 'clsx';
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  ArrowDownToLine,
+  ChevronDown,
+  ChevronLeft,
   ChevronRight,
+  ChevronUp,
   Eye,
   EyeOff,
+  Filter,
+  Pencil,
+  Search,
+  Trash2,
   X
 } from 'lucide-react';
-import clsx from 'clsx';
+import React, { useMemo, useRef, useState } from "react";
 
 type Person = {
   id: number;
