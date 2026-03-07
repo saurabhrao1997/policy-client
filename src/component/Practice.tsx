@@ -1,17 +1,41 @@
-import { useEffect } from "react";
+import { useState } from "react";
 
 export default function Practice() {
-  useEffect(() => {
-    const handleResize = () => {
-      console.log("resized");
-    };
+  const [task, setTask] = useState("");
+  const [todos, setTodos] = useState<string[]>([]);
 
-    window.addEventListener("resize", handleResize);
+  const addTodo = () => {
+    if (!task.trim()) return;
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+    setTodos([...todos, task]);
+    setTask("");
+  };
 
-  return <h1>Resize Component</h1>;
+  const deleteTodo = (index: number) => {
+    const updated = todos.filter((_, i) => i !== index);
+    setTodos(updated);
+  };
+
+  return (
+    <div>
+      <h1>Todo App</h1>
+
+      <input
+        placeholder="Enter task"
+        value={task}
+        onChange={(e) => setTask(e.target.value)}
+      />
+
+      <button onClick={addTodo}>Add Task</button>
+
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>
+            {todo}
+            <button onClick={() => deleteTodo(index)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }

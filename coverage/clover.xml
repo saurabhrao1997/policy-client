@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1771676331194" clover="3.2.0">
-  <project timestamp="1771676331194" name="All files">
-    <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4" elements="11" coveredelements="11" complexity="0" loc="7" ncloc="7" packages="1" files="1" classes="1"/>
+<coverage generated="1772877348376" clover="3.2.0">
+  <project timestamp="1772877348376" name="All files">
+    <metrics statements="10" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2" elements="14" coveredelements="10" complexity="0" loc="10" ncloc="10" packages="1" files="1" classes="1"/>
     <file name="Practice.tsx" path="D:\Advance rename\SAP\client\src\component\Practice.tsx">
-      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <metrics statements="10" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
       <line num="4" count="1" type="stmt"/>
-      <line num="5" count="1" type="stmt"/>
       <line num="6" count="1" type="stmt"/>
       <line num="9" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
       <line num="11" count="1" type="stmt"/>
-      <line num="12" count="1" type="stmt"/>
-      <line num="16" count="1" type="stmt"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="17" count="0" type="stmt"/>
+      <line num="23" count="0" type="stmt"/>
     </file>
   </project>
 </coverage>

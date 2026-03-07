@@ -1,22 +1,41 @@
-import "@testing-library/jest-dom/vitest";
-import { render } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+
+import { render, screen } from "@testing-library/react";
+
+import userEvent from "@testing-library/user-event";
 import Practice from "../../src/component/Practice";
 
-describe("Practice page",()=>{
-  it("first test",()=>{
-    const addSpy = vi.spyOn(window,"addEventListener");
-    const removeSpy = vi.spyOn(window,"removeEventListener");
-   const consoleSpy = vi.spyOn(console,"log").mockImplementation(()=>{})
-  const {unmount} =  render(<Practice/>)
-    expect(addSpy).toHaveBeenLastCalledWith("resize",expect.any(Function))
-    window.dispatchEvent(new Event("resize"))
-    expect(consoleSpy).toHaveBeenCalledWith("resized")
-    unmount()
-    expect(removeSpy).toHaveBeenLastCalledWith("resize",expect.any(Function))
-    vi.resetAllMocks()
+describe("testing Practice pege render or not",()=>{
+  it("check page render or not",()=>{
+     render(<Practice/>);
+  expect(screen.getByText(/Todo App/i)).toBeInTheDocument();
+  expect(screen.getByPlaceholderText(/Enter task/i)).toBeInTheDocument();
+  expect(screen.getByRole("button",{name:/Add Task/i})).toBeInTheDocument()
 
   })
+
+  it("now add tack in list items",async()=>{
+    render(<Practice/>);
+    let input = screen.getByPlaceholderText("Enter task");
+    let button = screen.getByRole("button");
+    await userEvent.type(input,"pawan");
+    await userEvent.click(button);
+    expect(await  screen.findByText("pawan")).toBeInTheDocument();
+  })
+
+  
+  it("nnow delete task",async()=>{
+    render(<Practice/>);
+    let input = screen.getByPlaceholderText("Enter task");
+    let button = screen.getByRole("button");
+    await userEvent.type(input,"pawan");
+    await userEvent.click(button);
+    expect(await  screen.findByText("pawan")).toBeInTheDocument();
+    let deleteButton = screen.getByRole("button",{name:"Delete"});
+    await userEvent.click(deleteButton)
+        expect(screen.queryByText("pawan")).not.toBeInTheDocument();
+
+  })
+ 
 })
 
 
