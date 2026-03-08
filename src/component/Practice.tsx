@@ -18,7 +18,7 @@ export default function Practice() {
 
   return (
     <div>
-      <h1>Todo App</h1>
+      <h1>Todo Appp</h1>
 
       <input
         placeholder="Enter task"
