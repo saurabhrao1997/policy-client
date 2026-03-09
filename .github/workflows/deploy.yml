@@ -62,6 +62,9 @@ jobs:
       - name: Build React app
         run: npm run build
 
+      - name: Check build folder
+        run: ls -la
+
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
         with:
