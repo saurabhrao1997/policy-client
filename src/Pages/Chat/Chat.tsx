@@ -2,8 +2,8 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import { useGetMassagesBetweenUsersQuery, useGetSidebarUserListQuery, useSendMassageMutation } from '../../API/ChatApi';
-
-export const socket = io("http://localhost:5000",{
+  const apiUrl = import.meta.env.VITE_API_URL;
+export const socket = io(apiUrl,{
   query:{
     token: localStorage.getItem('token') ? localStorage.getItem('token')  : '',
     userId: localStorage.getItem('userId') ?    localStorage.getItem('userId')  : ''
